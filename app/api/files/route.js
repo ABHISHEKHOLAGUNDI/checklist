@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const { data, error } = await supabase
       .from('leads')
-      .select('file_name');
+      .select('file_name')
+      .limit(10000);
 
     if (error) throw error;
 

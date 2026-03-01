@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const file = searchParams.get('file');
@@ -14,7 +16,8 @@ export async function GET(request) {
             .from('leads')
             .select('*')
             .eq('file_name', file)
-            .order('id', { ascending: true });
+            .order('id', { ascending: true })
+            .limit(10000);
 
         if (error) throw error;
 
