@@ -175,6 +175,7 @@ export default function CRMDashboard() {
                 <table>
                   <thead>
                     <tr>
+                      <th>Sr. No.</th>
                       <th>Firm Name</th>
                       <th>Mobile</th>
                       <th>WhatsApp</th>
@@ -185,6 +186,7 @@ export default function CRMDashboard() {
                   <tbody>
                     {leads.map((lead, index) => (
                       <tr key={lead.id}>
+                        <td style={{ color: 'var(--text-secondary)' }}>{index + 1}</td>
                         <td style={{ fontWeight: 500 }}>{lead['Firm/Professional Name'] || lead['Hospital/Clinic Name'] || lead.Name || 'Unknown'}</td>
                         <td style={{ color: 'var(--text-secondary)' }}>
                           {lead['Mobile Number'] && lead['Mobile Number'] !== 'N/A' ? (
