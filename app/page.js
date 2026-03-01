@@ -21,7 +21,7 @@ export default function CRMDashboard() {
   const [toast, setToast] = useState(null);
 
   useEffect(() => {
-    fetch('/api/files')
+    fetch(`/api/files?t=${Date.now()}`)
       .then(res => res.json())
       .then(data => {
         if (data.files) {
@@ -33,7 +33,7 @@ export default function CRMDashboard() {
   useEffect(() => {
     if (selectedFile) {
       setLoading(true);
-      fetch(`/api/leads?file=${encodeURIComponent(selectedFile)}`)
+      fetch(`/api/leads?file=${encodeURIComponent(selectedFile)}&t=${Date.now()}`)
         .then(res => res.json())
         .then(data => {
           if (data.data) {
