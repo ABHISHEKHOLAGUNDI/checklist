@@ -38,13 +38,6 @@ export async function GET(request) {
 }
 
 export async function PUT(request) {
-    const { searchParams } = new URL(request.url);
-    const file = searchParams.get('file');
-
-    if (!file) {
-        return NextResponse.json({ error: 'Invalid file' }, { status: 400 });
-    }
-
     try {
         const { data } = await request.json();
 
